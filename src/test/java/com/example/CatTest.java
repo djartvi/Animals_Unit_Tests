@@ -30,7 +30,7 @@ public class CatTest {
     @Test
     public void getSoundTest() {
 
-        Cat cat = new Cat(feline);
+        var cat = new Cat(feline);
 
         assertEquals("Мяу", cat.getSound());
     }

@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -15,20 +14,20 @@ public class AnimalTest {
     private final String animalKind;
     private final List<String> food;
 
-    public AnimalTest(String[] animalKind, String[] food) {
+    public AnimalTest(String animalKind, List<String> food) {
 
-        this.animalKind = Arrays.toString(animalKind);
-        this.food = List.of(food);
+        this.animalKind = animalKind;
+        this.food = food;
     }
 
-    @Parameterized.Parameters
-    public static String[][][] animalParameters() {
-        return new String[][][] {
-                {{"Травоядное"}, {"Трава", "Различные растения"}},
-                {{"Хищник"}, {"Животные", "Птицы", "Рыба"}},
-                {{"Веган"}, {""}},
-                {{""}, {""}},
-                {{"#$%@"}, {"Ревьюер, будь добр и справедлив!"}},
+    @Parameterized.Parameters(name = "ЖИВОТНОЕ: {0}, РАЦИОН: {1}")
+    public static Object[][] animalParameters() {
+        return new Object[][] {
+                {"Травоядное", List.of("Трава", "Различные растения")},
+                {"Хищник", List.of("Животные", "Птицы", "Рыба")},
+                {"Веган", List.of("")},
+                {"", List.of("", "что-то ещё")},
+                {"#$%@", List.of("Ревьюер, будь добр и справедлив!")},
         };
     }
 

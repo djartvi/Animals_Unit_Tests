@@ -17,6 +17,9 @@ public class LionTest {
 
     private String sex;
 
+    @Mock
+    Feline feline;
+
     public LionTest (String sex) {
         this.sex = sex;
     }
@@ -32,9 +35,6 @@ public class LionTest {
     public void init() {
         MockitoAnnotations.openMocks(this);
     }
-
-    @Mock
-    Feline feline;
 
     @Test
     public void getFoodTest() throws Exception {

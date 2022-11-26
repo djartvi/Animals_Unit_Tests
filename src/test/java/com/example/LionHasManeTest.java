@@ -14,6 +14,9 @@ public class LionHasManeTest {
     private Object expected;
     private static String exception = "Используйте допустимые значения пола животного - самец или самка";
 
+    @Mock
+    Feline feline;
+
     public LionHasManeTest (String sex, Object expected) {
         this.sex = sex;
         this.expected = expected;
@@ -28,15 +31,12 @@ public class LionHasManeTest {
         };
     }
 
-    @Mock
-    Feline feline;
-
     @Test
     public void doesHaveManeTest() throws Exception {
         try {
 
             Lion lion = new Lion(feline, sex);
-            assertEquals(expected, lion.hasMane);
+            assertEquals(expected, lion.doesHaveMane());
 
         } catch (Exception exception) {
 
